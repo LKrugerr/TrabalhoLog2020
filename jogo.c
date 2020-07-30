@@ -1,12 +1,13 @@
 #include<stdio.h>
 #include<stdbool.h>
 #include<stdlib.h>
+#include<string.h>
+#include<locale.h>
 #include "tabuleiro.c"
 #include "hospedes.c"
 #include "validacao.c"
 #include "ajudante.c"
 #include "fases.c"
-#include<locale.h>
 
 
 int main() {
@@ -21,15 +22,13 @@ int main() {
     printf("O quiejo (Q) não pode ficar ao lado dos ratos (R) \n\n");
     printf("Essa é a primeira fase.\n");
     printf("\n");
-    primeiraFase();
+    primeiraFase(); //Chama a primeira fase
     printf("Essa é a segunda fase.\n");
-    segundaFase();
+    segundaFase(); //Chama a segunda fase
     printf("Essa é a terceira fase. \n");
-    terceiraFase();
+    terceiraFase(); //Chama a terceira fase
     printf("Essa é a quarta fase. \n");
-    quartaFase();
+    quartaFase(); //Chama a quarta fase
     printf("Essa é a quinta fase. \n");
-    quintaFase();
+    quintaFase(); //Chama a quinta fase
 }
-
-

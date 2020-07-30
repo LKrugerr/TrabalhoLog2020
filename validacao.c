@@ -9,7 +9,7 @@ bool indiceValido(int linha, int coluna, int maximoLinhaTabuleiro, int maximoCol
         printf("As cordenadas de linha e coluna estao fora do permitido no tabuleiro.\n");
     }
     return valida;
-}
+}//Valida se as coordenadas para inserção estão dentro dos parâmetros ideais
 
 bool hospedeValido(char hospede) {
     bool valido = hospede == Cao
@@ -22,7 +22,7 @@ bool hospedeValido(char hospede) {
         printf("Hospede invalido.\n");
     }
     return valido;
-}
+}//Valida se o valor para hóspede é válido ou não
 
 bool ratoAoLadoDoGato(int linha, int coluna, char hospede, int maximoLinhaTabuleiro, int maximoColunaTabuleiro, char tabuleiro[][maximoColunaTabuleiro]) {
     
@@ -34,7 +34,7 @@ bool ratoAoLadoDoGato(int linha, int coluna, char hospede, int maximoLinhaTabule
     }
 
     return jogadaInvalida;
-}
+}//Verifica se as regras estão sendo seguidas
 
 bool caoAoLadoDoOsso(int linha, int coluna, char hospede, int maximoLinhaTabuleiro, int maximoColunaTabuleiro, char tabuleiro[][maximoColunaTabuleiro]) {
     bool jogadaInvalida = tabuleiro[linha][coluna] == Cao && hospede == Osso
@@ -43,7 +43,7 @@ bool caoAoLadoDoOsso(int linha, int coluna, char hospede, int maximoLinhaTabulei
         printf("Cao ao Lado do Osso!\n", tabuleiro[linha][coluna], hospede, linha, coluna);
     }
     return jogadaInvalida;
-}
+}//Verifica se as regras estão sendo seguidas
 
 bool gatoAoLadoDoCao(int linha, int coluna, char hospede, int maximoLinhaTabuleiro, int maximoColunaTabuleiro, char tabuleiro[][maximoColunaTabuleiro]) {
     bool jogadaInvalida = tabuleiro[linha][coluna] == Gato && hospede == Cao
@@ -52,7 +52,7 @@ bool gatoAoLadoDoCao(int linha, int coluna, char hospede, int maximoLinhaTabulei
         printf("Gato ao Lado do Cao!\n");
     }
     return jogadaInvalida;
-}
+}//Verifica se as regras estão sendo seguidas
 
 bool queijoAoLadoDoRato(int linha, int coluna, char hospede, int maximoLinhaTabuleiro, int maximoColunaTabuleiro, char tabuleiro[][maximoColunaTabuleiro]) {
     bool jogadaInvalida = tabuleiro[linha][coluna] == Queijo && hospede == Rato
@@ -61,35 +61,35 @@ bool queijoAoLadoDoRato(int linha, int coluna, char hospede, int maximoLinhaTabu
         printf("Queijo ao Lado do Rato!\n");
     }
     return jogadaInvalida;
-}
+}//Verifica se as regras estão sendo seguidas
 
 bool validarEsquerda(int linha, int coluna, char hospede, int maximoLinhaTabuleiro, int maximoColunaTabuleiro, char tabuleiro[][maximoColunaTabuleiro]) {
     return !caoAoLadoDoOsso(linha, coluna - 1, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro)
     && !ratoAoLadoDoGato(linha, coluna - 1, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro)
     && !gatoAoLadoDoCao(linha, coluna - 1, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro)
     && !queijoAoLadoDoRato(linha, coluna - 1, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro);
-}
+}// Valida o caracter a esquerda do inserido, coluna -1 para ir à esquerda
 
 bool validarDireita(int linha, int coluna, char hospede, int maximoLinhaTabuleiro, int maximoColunaTabuleiro, char tabuleiro[][maximoColunaTabuleiro]) {
     return !caoAoLadoDoOsso(linha, coluna + 1, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro)
     && !ratoAoLadoDoGato(linha, coluna + 1, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro)
     && !gatoAoLadoDoCao(linha, coluna + 1, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro)
     && !queijoAoLadoDoRato(linha, coluna + 1, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro);
-}
+}//Valida o caracter a direita do inserido, coluna+1 para ir à direita
 
 bool validarCima(int linha, int coluna, char hospede, int maximoLinhaTabuleiro, int maximoColunaTabuleiro, char tabuleiro[][maximoColunaTabuleiro]) {
     return !caoAoLadoDoOsso(linha - 1, coluna, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro)
     && !ratoAoLadoDoGato(linha - 1, coluna, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro)
     && !gatoAoLadoDoCao(linha - 1, coluna, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro)
     && !queijoAoLadoDoRato(linha - 1, coluna, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro);
-}
+}//Valida o caracter acima do inserido, linha-1 para 'subir'
 
 bool validarBaixo(int linha, int coluna, char hospede, int maximoLinhaTabuleiro, int maximoColunaTabuleiro, char tabuleiro[][maximoColunaTabuleiro]) {
     return !caoAoLadoDoOsso(linha + 1, coluna, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro)
     && !ratoAoLadoDoGato(linha + 1, coluna, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro)
     && !gatoAoLadoDoCao(linha + 1, coluna, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro)
     && !queijoAoLadoDoRato(linha + 1, coluna, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro);
-}//Valida o caracter abaixo do inserido, linha+1 
+}//Valida o caracter abaixo do inserido, linha+1 para 'descer'
 
 bool hospedeAlocadoCorretamente(int linha, int coluna, char hospede, int maximoLinhaTabuleiro, int maximoColunaTabuleiro, char tabuleiro[][maximoColunaTabuleiro]) {
     bool validoCima = false,
@@ -101,7 +101,7 @@ bool hospedeAlocadoCorretamente(int linha, int coluna, char hospede, int maximoL
         validoCima = validarCima(linha, coluna, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro);
     } else {
         validoCima = true;
-    }
+    }//Se a linha for maior que 0 ele fará a verificação do hóspede acima, se for igual a 0, não é necessário fazer a validação
 
     if(linha < maximoLinhaTabuleiro - 1) {
         validoBaixo = validarBaixo(linha, coluna, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro);
@@ -113,7 +113,7 @@ bool hospedeAlocadoCorretamente(int linha, int coluna, char hospede, int maximoL
         validoEsquerda = validarEsquerda(linha, coluna, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro);
     } else {
         validoEsquerda = true;
-    }
+    }//Se a coluna for maior que 1 ele fará a verificação do hóspede à esquerda, se for igual a 0, não é necessário fazer a validação
 
     if(coluna < maximoColunaTabuleiro - 1) {
         validoDireita = validarDireita(linha, coluna, hospede, maximoLinhaTabuleiro, maximoColunaTabuleiro, tabuleiro);
@@ -130,7 +130,7 @@ bool posicaoValida(int linha, int coluna, char hospede, int maximoLinhaTabuleiro
         printf("Espaço indisponível\n");
     }
     return valida;
-}
+}//valida se a poisção está ocupada por I ou não.
 
 bool podeAlocarHospede(char hospedeSelecionado, int tamanhoHospedesValidos, char hospedesValidos[tamanhoHospedesValidos]) { 
     bool podeAlocar = false;
@@ -168,7 +168,7 @@ bool jogadaValida(int linha, int coluna, char hospede, int maximoLinhaTabuleiro,
         return false;
     }
     return true;
-}
+}//todas as validações tem que ser válidas para o hóspede ser alocado
 
 bool verificaSeJogoAcabou(int maximoLinhaTabuleiro, int maximoColunaTabuleiro, char tabuleiro[][maximoColunaTabuleiro]) {
     bool possuiEspacoDisponivel = false;
